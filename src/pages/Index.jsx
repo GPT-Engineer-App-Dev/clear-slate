@@ -1,4 +1,4 @@
-import { Container, Text, VStack, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Spinner, Alert, AlertIcon } from "@chakra-ui/react";
 import { useEvents } from "../integrations/supabase/index.js";
 
 const Index = () => {
@@ -25,12 +25,26 @@ const Index = () => {
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Events</Text>
-        {events.map(event => (
-          <Text key={event.id}>{event.name}</Text>
-        ))}
-      </VStack>
+      <Table variant="simple">
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Date</Th>
+            <Th>Description</Th>
+            <Th>Venue</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {events.map(event => (
+            <Tr key={event.id}>
+              <Td>{event.name}</Td>
+              <Td>{event.date}</Td>
+              <Td>{event.description}</Td>
+              <Td>{event.venue.name}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </Container>
   );
 };
