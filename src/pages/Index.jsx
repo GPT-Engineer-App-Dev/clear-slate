@@ -40,7 +40,7 @@ const Index = () => {
               <Td>{event.name}</Td>
               <Td>{event.date}</Td>
               <Td>{event.description}</Td>
-              <Td>{event.venue.name}</Td>
+              <Td>{event.venues.name}</Td>
             </Tr>
           ))}
         </Tbody>
