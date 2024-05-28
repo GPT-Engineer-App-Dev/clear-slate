@@ -29,6 +29,7 @@ Event // table: events
     description: string
     venue_id: number // foreign key to Venue
     comments?: Comment[] // available if .select('*,comments(*)') was done
+    venue?: Venue // available if .select('*,venues(*)') was done
 */
 
 // Comment type
@@ -54,10 +55,10 @@ Venue // table: venues
 
 // Hooks
 
-// Fetch all events with related venue
+// Fetch all events with related venues
 export const useEvents = () => useQuery({
     queryKey: ['events'],
-    queryFn: () => fromSupabase(supabase.from('events').select('*,venue(*)')),
+    queryFn: () => fromSupabase(supabase.from('events').select('*,venues(*)')),
 });
 
 // Fetch all comments
