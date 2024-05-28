@@ -54,10 +54,10 @@ Venue // table: venues
 
 // Hooks
 
-// Fetch all events with related comments and venue
+// Fetch all events with related venue
 export const useEvents = () => useQuery({
     queryKey: ['events'],
-    queryFn: () => fromSupabase(supabase.from('events').select('*,comments(*),venue(*)')),
+    queryFn: () => fromSupabase(supabase.from('events').select('*,venue(*)')),
 });
 
 // Fetch all comments
